@@ -1,7 +1,9 @@
 import { NetworkTables } from "ntcore-ts-client";
 
+export const MockedSubscribe = jest.fn();
+
 export const MockedTopic = {
-    subscribe: jest.fn(),
+    subscribe: jest.fn().mockReturnValue(1),
     unsubscribe: jest.fn(),
     publish: jest.fn(),
     setValue: jest.fn(),

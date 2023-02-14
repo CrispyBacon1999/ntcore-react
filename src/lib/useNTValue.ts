@@ -26,8 +26,6 @@ const useNTValue = <T extends NTTopicTypes>(
             return () => {
                 if (subuid) {
                     topic.unsubscribe(subuid);
-                } else {
-                    console.error("No subuid to unsubscribe");
                 }
             };
         } else {

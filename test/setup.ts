@@ -12,4 +12,12 @@ jest.spyOn(NetworkTables, "createInstanceByURI").mockImplementation(
 
 beforeEach(() => {
     jest.clearAllMocks();
+    jest.spyOn(console, "error");
+    // @ts-ignore jest.spyOn adds this functionallity
+    console.error.mockImplementation(() => null);
+});
+
+afterEach(() => {
+    // @ts-ignore jest.spyOn adds this functionallity
+    console.error.mockRestore();
 });

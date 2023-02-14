@@ -7,7 +7,17 @@ const useNTState = <T extends NTTopicTypes>(
     key: string,
     ntType: NetworkTablesTypeInfo,
     defaultValue: T
-) => {
+): [
+    T,
+    (
+        value: T,
+        publishProperties?: {
+            persistent?: boolean;
+            retained?: boolean;
+            id?: number;
+        }
+    ) => void
+] => {
     const client = useContext(NTContext);
     const [topic, setTopic] = useState<NetworkTablesTopic<T> | null>(null);
     const [value, setValue] = useState<T>(defaultValue);
@@ -26,8 +36,6 @@ const useNTState = <T extends NTTopicTypes>(
             return () => {
                 if (subuid) {
                     topic.unsubscribe(subuid);
-                } else {
-                    console.error("No subuid to unsubscribe");
                 }
             };
         } else {
@@ -55,8 +63,7 @@ const useNTState = <T extends NTTopicTypes>(
         if (topic) {
             topic.publish(publishProperties);
             topic.setValue(value);
-        } else {
-            console.error("Tried setting topic before it was created");
+            setValue(value);
         }
     };
 

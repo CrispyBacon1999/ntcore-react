@@ -1,40 +1,25 @@
 import React from "react";
-import { NTProvider, useNTState } from "../src";
+import { NTProvider, useNTValue } from "../src";
 import { NetworkTableTypeInfos } from "ntcore-ts-client";
 import { render, act, fireEvent } from "@testing-library/react";
 import { MockedNetworkTables, MockedTopic } from "./mocks";
 import { NetworkTables } from "ntcore-ts-client";
 
 const TestComponent = () => {
-    const [state, setState] = useNTState(
-        "test",
-        NetworkTableTypeInfos.kBoolean,
-        false
-    );
+    const state = useNTValue("test", NetworkTableTypeInfos.kBoolean, false);
     return <div>{state.toString()}</div>;
 };
 
-const TestComponentUpdate = () => {
-    const [state, setState] = useNTState<string>(
+const StringComponent = () => {
+    const state = useNTValue<string>(
         "test",
         NetworkTableTypeInfos.kString,
-        "Test"
+        "default"
     );
-    return (
-        <>
-            <button
-                onClick={() => {
-                    setState("Test2");
-                }}
-            >
-                Update
-            </button>
-            <div>{state}</div>
-        </>
-    );
+    return <div>{state}</div>;
 };
 
-test("useNTState throws error if no NTProvider is found", () => {
+test("useNTValue throws error if no NTProvider is found", () => {
     expect(() => {
         render(<TestComponent />);
     }).toThrowError(
@@ -42,7 +27,7 @@ test("useNTState throws error if no NTProvider is found", () => {
     );
 });
 
-test("useNTState returns default value if no value is found", async () => {
+test("useNTValue returns default value if no value is found", async () => {
     const { getByText } = render(
         <NTProvider teamNumber={123}>
             <TestComponent />
@@ -52,7 +37,7 @@ test("useNTState returns default value if no value is found", async () => {
     expect(await getByText("false")).toBeInTheDocument();
 });
 
-test("useNTState returns value from network tables", async () => {
+test("useNTValue returns value from network tables", async () => {
     let handler: (value: string) => number;
 
     MockedTopic.subscribe.mockImplementation(
@@ -75,7 +60,7 @@ test("useNTState returns value from network tables", async () => {
     expect(await getByText("Test")).toBeInTheDocument();
 });
 
-test("useNTState updates value when network tables value changes", async () => {
+test("useNTValue updates value when network tables value changes", async () => {
     let handler: (value: string) => number;
 
     MockedTopic.subscribe.mockImplementation(
@@ -122,19 +107,19 @@ test("useNTValue uses the default value if the network tables value is null", as
 
     const { getByText, rerender } = render(
         <NTProvider teamNumber={123}>
-            <TestComponentUpdate />
+            <StringComponent />
         </NTProvider>
     );
 
     act(() => {
-        handler("Test Actual Data");
+        handler("Test");
     });
 
-    expect(await getByText("Test Actual Data")).toBeInTheDocument();
+    expect(await getByText("Test")).toBeInTheDocument();
 
     rerender(
         <NTProvider teamNumber={123}>
-            <TestComponentUpdate />
+            <StringComponent />
         </NTProvider>
     );
 
@@ -142,10 +127,10 @@ test("useNTValue uses the default value if the network tables value is null", as
         handler(null);
     });
 
-    expect(await getByText("Test")).toBeInTheDocument();
+    expect(await getByText("default")).toBeInTheDocument();
 });
 
-test("useNTState unsubscribes from network tables when component unmounts", async () => {
+test("useNTValue unsubscribes from network tables when component unmounts", async () => {
     let handler: (value: string) => number;
 
     MockedTopic.subscribe.mockImplementation(
@@ -170,21 +155,4 @@ test("useNTState unsubscribes from network tables when component unmounts", asyn
     unmount();
 
     expect(MockedTopic.unsubscribe).toHaveBeenCalledWith(1);
-});
-
-test("useNTState sends value to network tables when state is changed", async () => {
-    const { getByText, rerender } = render(
-        <NTProvider teamNumber={123}>
-            <TestComponentUpdate />
-        </NTProvider>
-    );
-
-    expect(await getByText("Test")).toBeInTheDocument();
-
-    await fireEvent.click(getByText("Update"));
-
-    expect(await getByText("Test2")).toBeInTheDocument();
-
-    expect(MockedTopic.publish).toHaveBeenCalled();
-    expect(MockedTopic.setValue).toHaveBeenCalledWith("Test2");
 });
