@@ -1,21 +1,18 @@
-import { render, fireEvent } from "@testing-library/react";
+import { render } from "@testing-library/react";
 
 import NTProvider from "../src/lib/NTProvider";
-import NTContext from "../src/lib/NTContext";
 import { NetworkTables } from "ntcore-ts-client";
 import React from "react";
 import { MockedNetworkTables } from "./mocks";
 
 test("NTProvider creates NT Instance using team number", () => {
-    const { getByText } = render(<NTProvider teamNumber={123}></NTProvider>);
+    render(<NTProvider teamNumber={123}></NTProvider>);
 
     expect(NetworkTables.createInstanceByTeam).toHaveBeenCalledWith(
         123,
         undefined
     );
 });
-
-const SampleChildren = <div>Connected!</div>;
 
 test("NTProvider throws error if no uri or team number is provided", () => {
     expect(() => {
@@ -26,9 +23,7 @@ test("NTProvider throws error if no uri or team number is provided", () => {
 });
 
 test("NTProvider uses uri if both uri and team number are provided", () => {
-    const { getByText } = render(
-        <NTProvider uri={"test"} teamNumber={123}></NTProvider>
-    );
+    render(<NTProvider uri={"test"} teamNumber={123}></NTProvider>);
     expect(NetworkTables.createInstanceByURI).toHaveBeenCalledWith(
         "test",
         undefined
@@ -69,7 +64,7 @@ test("NTProvider throws error if team number is changed after connection is crea
 });
 
 test("NTProvider creates NT Instance using URI", () => {
-    const { getByText } = render(<NTProvider uri={"test"}></NTProvider>);
+    render(<NTProvider uri={"test"}></NTProvider>);
 
     expect(NetworkTables.createInstanceByURI).toHaveBeenCalledWith(
         "test",

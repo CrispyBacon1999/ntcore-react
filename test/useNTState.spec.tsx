@@ -2,11 +2,10 @@ import React from "react";
 import { NTProvider, useNTState } from "../src";
 import { NetworkTableTypeInfos } from "ntcore-ts-client";
 import { render, act, fireEvent } from "@testing-library/react";
-import { MockedNetworkTables, MockedTopic } from "./mocks";
-import { NetworkTables } from "ntcore-ts-client";
+import { MockedTopic } from "./mocks";
 
 const TestComponent = () => {
-    const [state, setState] = useNTState(
+    const [state, _] = useNTState(
         "test",
         NetworkTableTypeInfos.kBoolean,
         false
@@ -173,7 +172,7 @@ test("useNTState unsubscribes from network tables when component unmounts", asyn
 });
 
 test("useNTState sends value to network tables when state is changed", async () => {
-    const { getByText, rerender } = render(
+    const { getByText } = render(
         <NTProvider teamNumber={123}>
             <TestComponentUpdate />
         </NTProvider>
