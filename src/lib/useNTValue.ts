@@ -1,4 +1,4 @@
-import { NetworkTablesTopic, NetworkTablesTypeInfo } from "ntcore-ts-client";
+import { NetworkTablesTypeInfo } from "ntcore-ts-client";
 import { useContext, useEffect, useState } from "react";
 import NTContext from "./NTContext";
 import NTTopicTypes from "./NTTopicType";
@@ -9,23 +9,19 @@ const useNTValue = <T extends NTTopicTypes>(
     defaultValue: T
 ) => {
     const client = useContext(NTContext);
-    const [topic, setTopic] = useState<NetworkTablesTopic<T> | null>(null);
     const [value, setValue] = useState<T>(defaultValue);
-    const [subuid, setSubuid] = useState<number | null>(null);
 
     useEffect(() => {
         if (client) {
             const listener = (value: T | null) => {
                 setValue(value ?? defaultValue);
             };
-            const topic = client.createTopic(key, ntType, defaultValue);
-            setTopic(topic);
-            const subuid = topic.subscribe(listener);
-            setSubuid(subuid);
+            const clientTopic = client.createTopic(key, ntType, defaultValue);
+            const subscriptionUID = clientTopic.subscribe(listener);
 
             return () => {
-                if (subuid) {
-                    topic.unsubscribe(subuid);
+                if (subscriptionUID && clientTopic) {
+                    clientTopic.unsubscribe(subscriptionUID);
                 }
             };
         } else {
