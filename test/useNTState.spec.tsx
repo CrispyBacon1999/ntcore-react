@@ -5,11 +5,7 @@ import { render, act, fireEvent } from "@testing-library/react";
 import { MockedTopic } from "./mocks";
 
 const TestComponent = () => {
-    const [state, _] = useNTState(
-        "test",
-        NetworkTableTypeInfos.kBoolean,
-        false
-    );
+    const [state] = useNTState("test", NetworkTableTypeInfos.kBoolean, false);
     return <div>{state.toString()}</div>;
 };
 
