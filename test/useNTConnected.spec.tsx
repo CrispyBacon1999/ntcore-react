@@ -37,17 +37,15 @@ test("useNTConnected accurately tracks the value from addRobotConnectionListener
 });
 
 test("useNTConnected calls cleanup function when unmounted", async () => {
-    let handler: (connected: boolean) => void;
     const cleanup = jest.fn();
 
     MockedNetworkTables.addRobotConnectionListener = jest
         .fn()
         .mockImplementation((listener: (connected: boolean) => void) => {
-            handler = listener;
             return cleanup;
         });
 
-    const { getByText, unmount } = render(
+    const { unmount } = render(
         <NTProvider teamNumber={123}>
             <TestComponent />
         </NTProvider>
