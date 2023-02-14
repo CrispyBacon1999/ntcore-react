@@ -41,7 +41,7 @@ test("useNTConnected calls cleanup function when unmounted", async () => {
 
     MockedNetworkTables.addRobotConnectionListener = jest
         .fn()
-        .mockImplementation((listener: (connected: boolean) => void) => {
+        .mockImplementation((_: (connected: boolean) => void) => {
             return cleanup;
         });
 
