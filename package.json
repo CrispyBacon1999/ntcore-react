@@ -9,7 +9,7 @@
     "nt4",
     "react"
   ],
-  "version": "1.0.1",
+  "version": "1.1.0",
   "type": "module",
   "license": "MIT",
   "scripts": {
@@ -53,13 +53,13 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/index.es.js",
-      "require": "./dist/index.umd.js",
+      "import": "./dist/ntcore-react.es.js",
+      "require": "./dist/ntcore-react.umd.js",
       "types": "./dist/index.d.ts"
     }
   },
-  "main": "dist/index.umd.js",
-  "module": "dist/index.es.js",
+  "main": "dist/ntcore-react.umd.js",
+  "module": "dist/ntcore-react.es.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
