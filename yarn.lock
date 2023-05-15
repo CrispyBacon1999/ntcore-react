@@ -8993,7 +8993,7 @@ npmlog@^5.0.1:
     gauge "^3.0.0"
     set-blocking "^2.0.0"
 
-ntcore-ts-client@0.2.1:
+ntcore-ts-client@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/ntcore-ts-client/-/ntcore-ts-client-0.2.1.tgz#b2251d6be8374cb29b25a2d08b58c21977808270"
   integrity sha512-YrTe1cPEqG/VE2LoQr3dteadKb1I4vOCYA7T4IKrPYced1ngj2e07Ce6Jga5MTvrDrVnHdXhuRZF4iJBJQU5VQ==
