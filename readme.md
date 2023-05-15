@@ -1,4 +1,4 @@
-![NT4 React](/docs/NT4-React.png)
+<center>![NT4 React](/docs/NT4-React.png)</center>
 
 <center>
 <h1>NT4 React</h1>

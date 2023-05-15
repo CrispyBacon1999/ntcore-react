@@ -1,0 +1,28 @@
+:root {
+    --team-primary-color: #fb8500;
+    --team-secondary-color: #219ebc;
+    --team-primary-neutral-color: #ffb703;
+    --team-secondary-neutral-color: #8ecae6;
+    --team-background-color: #023047;
+}
+
+.indicator {
+    background-color: var(--team-secondary-neutral-color);
+    color: var(--team-background-color);
+    border-radius: 0.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.75rem;
+    width: 3rem;
+    height: 3rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.indicator--on {
+    background-color: var(--team-primary-color);
+}
+
+.indicator--off {
+    background-color: var(--team-secondary-neutral-color);
+}
