@@ -24,9 +24,8 @@ export default function NTProvider({
     teamNumber,
     port,
 }: NTProviderProps) {
-    const [ntConnection, setNtConnection] = useState<NetworkTables | null>(
-        null
-    );
+    const [ntConnection, setNtConnection] =
+        useState<NetworkTables | null>(null);
     const [
         ntConnectionCreatedUsingTeamNumber,
         setNtConnectionCreatedUsingTeamNumber,
