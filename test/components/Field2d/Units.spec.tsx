@@ -1,4 +1,4 @@
-import { Units } from "../../../src/components/Field2d/Util";
+import Units from "../../../src/lib/util/Units";
 
 describe("Units", () => {
     describe("inchesToMeters", () => {

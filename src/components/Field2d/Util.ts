@@ -1,5 +1,6 @@
 import { createContext, useContext } from "react";
 import { Year } from "../../lib/util/Year";
+import { Years } from "./Years";
 
 /**
  * NetworkTables representation of a Pose2d
@@ -15,12 +16,6 @@ export type Rotation2d = number;
  * NetworkTables representation of a Pose2d
  */
 export type Pose2d = [...Transform2d, Rotation2d];
-
-type YearData = {
-    fieldMirrored: boolean;
-    fieldSize: [number, number];
-    fieldBase: string;
-};
 
 export const YearContext = createContext<Year>(Year.ChargedUp);
 
@@ -128,37 +123,3 @@ export function useAllianceFlip(
 export function transformsToSVGPoints(transforms: Transform2d[]): string {
     return transforms.map((transform) => transform.join(",")).join(" ");
 }
-
-export namespace Units {
-    export function inchesToMeters(inches: number) {
-        return inches * 0.0254;
-    }
-
-    export function metersToInches(meters: number) {
-        return meters / 0.0254;
-    }
-
-    export function feetToMeters(feet: number) {
-        return feet * 0.3048;
-    }
-
-    export function metersToFeet(meters: number) {
-        return meters / 0.3048;
-    }
-
-    export function degreesToRadians(degrees: number): number {
-        return (degrees * Math.PI) / 180;
-    }
-
-    export function radiansToDegrees(radians: number): number {
-        return (radians * 180) / Math.PI;
-    }
-}
-
-export const Years: { [key in Year]: YearData } = {
-    2023: {
-        fieldMirrored: true,
-        fieldSize: [Units.inchesToMeters(651.25), Units.inchesToMeters(315.5)],
-        fieldBase: "./Fields/Field2dChargedUp",
-    },
-};

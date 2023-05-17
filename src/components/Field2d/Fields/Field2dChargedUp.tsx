@@ -1,10 +1,6 @@
 import React from "react";
-import {
-    Transform2d,
-    Units,
-    transformsToSVGPoints,
-    useAllianceFlip,
-} from "../Util";
+import { Transform2d, transformsToSVGPoints, useAllianceFlip } from "../Util";
+import Units from "../../../lib/util/Units";
 
 namespace FieldParams {
     export const fieldWidth = Units.inchesToMeters(651.25);

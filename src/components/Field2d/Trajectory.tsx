@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
-import { type Transform2d, useAllianceFlip, Units } from "./Util";
+import { type Transform2d, useAllianceFlip } from "./Util";
+import Units from "../../lib/util/Units";
 
 function Trajectory({
     trajectory,

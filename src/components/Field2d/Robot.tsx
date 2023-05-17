@@ -1,6 +1,7 @@
 import React from "react";
-import { Pose2d, Units, useAllianceColor, useAllianceFlip } from "./Util";
+import { Pose2d, useAllianceColor, useAllianceFlip } from "./Util";
 import { CSSProperties } from "react";
+import Units from "../../lib/util/Units";
 
 export type RobotProps = {
     width: number;
