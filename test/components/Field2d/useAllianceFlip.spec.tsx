@@ -3,10 +3,10 @@ import React, { ReactNode } from "react";
 import {
     AllianceColorContext,
     YearContext,
-    Years,
     useAllianceFlip,
 } from "../../../src/components/Field2d/Util";
 import { Year } from "../../../src/lib/util/Year";
+import { Years } from "../../../src/components/Field2d/Years";
 
 describe("useAllianceFlip", () => {
     const fieldSize = Years[2023].fieldSize;
