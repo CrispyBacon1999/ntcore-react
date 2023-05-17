@@ -1,6 +1,6 @@
 import React from "react";
 
-export type GuageProps = {
+export type GaugeProps = {
     value: number;
     min?: number;
     max?: number;
@@ -10,24 +10,24 @@ export type GuageProps = {
 };
 
 /**
- * Guage component used for displaying a value as a range
+ * Gauge component used for displaying a value as a range
  *
  * ---
  *
  * Styling is done using CSS variables:
  *
- * --team-primary-color: The color of the guage when filled
+ * --team-primary-color: The color of the gauge when filled
  *
- * --team-secondary-neutral-color: The color of the guage when empty
+ * --team-secondary-neutral-color: The color of the gauge when empty
  */
-export function Guage({
+export function Gauge({
     width = 100,
     value,
     min = 0,
     max = 100,
     label = "",
     showValue = false,
-}: GuageProps) {
+}: GaugeProps) {
     const strokeWidth = width / 10;
     const innerRadius = width / 2 - strokeWidth / 2;
     const circumference = innerRadius * 2 * Math.PI;
@@ -41,7 +41,7 @@ export function Guage({
     return (
         <svg width={width} height={width}>
             <circle
-                className="guage_base"
+                className="gauge_base"
                 cx={width / 2}
                 cy={width / 2}
                 fill="transparent"
@@ -53,7 +53,7 @@ export function Guage({
                 strokeLinecap="round"
             />
             <circle
-                className="guage_base"
+                className="gauge_base"
                 cx={width / 2}
                 cy={width / 2}
                 fill="transparent"
