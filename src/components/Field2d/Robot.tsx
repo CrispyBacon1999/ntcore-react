@@ -1,11 +1,5 @@
 import React from "react";
-import {
-    Pose2d,
-    inchesToMeters,
-    toRadians,
-    useAllianceColor,
-    useAllianceFlip,
-} from "./Util";
+import { Pose2d, Units, useAllianceColor, useAllianceFlip } from "./Util";
 import { CSSProperties } from "react";
 
 export type RobotProps = {
@@ -15,7 +9,7 @@ export type RobotProps = {
 
 const robotStyle: CSSProperties = {
     fill: "white",
-    borderRadius: inchesToMeters(1.5),
+    borderRadius: Units.inchesToMeters(1.5),
     strokeLinejoin: "round",
 };
 
@@ -36,7 +30,7 @@ function Robot({ width, length, pose }: RobotProps & { pose: Pose2d }) {
                         ? "var(--red-alliance-color)"
                         : "var(--blue-alliance-color)"
                 }
-                strokeWidth={inchesToMeters(3)}
+                strokeWidth={Units.inchesToMeters(3)}
                 transform={`translate(${robotPose[0] - width / 2}, ${
                     robotPose[1] - length / 2
                 }) rotate(${robotPose[2]})`}
@@ -51,14 +45,14 @@ function Robot({ width, length, pose }: RobotProps & { pose: Pose2d }) {
                 y1={robotPose[1]}
                 x2={
                     robotPose[0] +
-                    (Math.cos(toRadians(robotPose[2])) * width) / 2
+                    (Math.cos(Units.degreesToRadians(robotPose[2])) * width) / 2
                 }
                 y2={
                     robotPose[1] +
-                    (Math.sin(toRadians(robotPose[2])) * width) / 2
+                    (Math.sin(Units.degreesToRadians(robotPose[2])) * width) / 2
                 }
                 stroke="black"
-                strokeWidth={inchesToMeters(3)}
+                strokeWidth={Units.inchesToMeters(3)}
             />
         </>
     );

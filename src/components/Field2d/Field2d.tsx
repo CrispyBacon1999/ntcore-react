@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Year } from "../../lib/util/Year";
 import { AllianceColorContext, Pose2d, YearContext, Years } from "./Util";
 import Robot, { RobotProps } from "./Robot";
@@ -27,10 +27,18 @@ export function Field2d({
     isRed = false,
     trajectory,
 }: Field2dProps) {
-    const { fieldSize, fieldBase: FieldComponent } = useMemo(
+    const { fieldSize, fieldBase: fieldComponentPath } = useMemo(
         () => Years[year],
         [year]
     );
+
+    const [FieldComponent, setFieldComponent] = useState<React.ReactNode>(null);
+
+    useEffect(() => {
+        import(fieldComponentPath).then((module) => {
+            setFieldComponent(module.default());
+        });
+    }, [fieldComponentPath]);
 
     return (
         <YearContext.Provider value={year}>
@@ -39,7 +47,7 @@ export function Field2d({
                     viewBox={`0 0 ${fieldSize[0]} ${fieldSize[1]}`}
                     style={field2dStyle}
                 >
-                    <FieldComponent />
+                    {FieldComponent}
                     <Robot {...robotProps} pose={pose} />
                     {trajectory ? <Trajectory trajectory={trajectory} /> : null}
                 </svg>

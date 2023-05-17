@@ -1,23 +1,22 @@
 import React from "react";
 import {
     Transform2d,
-    feetToMeters,
-    inchesToMeters,
+    Units,
     transformsToSVGPoints,
     useAllianceFlip,
 } from "../Util";
 
 namespace FieldParams {
-    export const fieldWidth = inchesToMeters(651.25);
-    export const fieldHeight = inchesToMeters(315.5);
-    export const tapeWidth = inchesToMeters(2);
+    export const fieldWidth = Units.inchesToMeters(651.25);
+    export const fieldHeight = Units.inchesToMeters(315.5);
+    export const tapeWidth = Units.inchesToMeters(2);
 
     export namespace Community {
         export const innerX = 0;
-        export const midX = inchesToMeters(132.375);
-        export const outerX = inchesToMeters(193.25);
-        export const leftY = feetToMeters(18);
-        export const midY = leftY - inchesToMeters(59.39) + tapeWidth;
+        export const midX = Units.inchesToMeters(132.375);
+        export const outerX = Units.inchesToMeters(193.25);
+        export const leftY = Units.feetToMeters(18);
+        export const midY = leftY - Units.inchesToMeters(59.39) + tapeWidth;
         export const rightY = 0;
         export const regionCorners: Transform2d[] = [
             [innerX, rightY],
@@ -31,9 +30,9 @@ namespace FieldParams {
     }
 
     export namespace ChargingStation {
-        export const width = inchesToMeters(76.125);
-        export const height = inchesToMeters(97.25);
-        export const flapWidth = inchesToMeters(12);
+        export const width = Units.inchesToMeters(76.125);
+        export const height = Units.inchesToMeters(97.25);
+        export const flapWidth = Units.inchesToMeters(12);
         export const outerX = Community.outerX - tapeWidth;
         export const innerX = outerX - width;
         export const leftY = Community.midY - tapeWidth;
@@ -61,16 +60,16 @@ namespace FieldParams {
     export namespace Grid {
         export const leftY = Community.leftY;
         export const rightY = Community.rightY;
-        export const innerX = inchesToMeters(13.926);
-        export const outerX = inchesToMeters(64.99);
-        export const lowX = outerX - inchesToMeters(16.113);
-        export const endPoleY = inchesToMeters(20.19);
-        export const poleSeparationY = inchesToMeters(22);
-        export const endAdditionalWidth = inchesToMeters(9.19);
+        export const innerX = Units.inchesToMeters(13.926);
+        export const outerX = Units.inchesToMeters(64.99);
+        export const lowX = outerX - Units.inchesToMeters(16.113);
+        export const endPoleY = Units.inchesToMeters(20.19);
+        export const poleSeparationY = Units.inchesToMeters(22);
+        export const endAdditionalWidth = Units.inchesToMeters(9.19);
 
-        export const cubeShelfWidth = inchesToMeters(14.25);
+        export const cubeShelfWidth = Units.inchesToMeters(14.25);
 
-        export const separatorWidth = inchesToMeters(3.5);
+        export const separatorWidth = Units.inchesToMeters(3.5);
 
         export const separatorY: number[] = [
             leftY,
@@ -87,12 +86,12 @@ namespace FieldParams {
     }
 
     export namespace LoadingZone {
-        export const width = inchesToMeters(99);
+        export const width = Units.inchesToMeters(99);
         export const innerX = fieldWidth;
-        export const midX = fieldWidth - inchesToMeters(132.25);
-        export const outerX = fieldWidth - inchesToMeters(264.25);
+        export const midX = fieldWidth - Units.inchesToMeters(132.25);
+        export const outerX = fieldWidth - Units.inchesToMeters(264.25);
         export const leftY = fieldHeight;
-        export const midY = leftY - inchesToMeters(50.5);
+        export const midY = leftY - Units.inchesToMeters(50.5);
         export const rightY = leftY - width;
         export const regionCorners: Transform2d[] = [
             [midX, rightY],
@@ -105,7 +104,7 @@ namespace FieldParams {
     }
 
     export namespace DoubleSubstation {
-        export const width = inchesToMeters(14);
+        export const width = Units.inchesToMeters(14);
         export const corners: Transform2d[] = [
             [LoadingZone.innerX, fieldHeight],
             [LoadingZone.innerX - width, fieldHeight],
@@ -115,10 +114,10 @@ namespace FieldParams {
     }
 
     export namespace SingleSubstation {
-        export const width = inchesToMeters(22.75);
+        export const width = Units.inchesToMeters(22.75);
         export const leftX =
-            fieldWidth - DoubleSubstation.width - inchesToMeters(88.77);
-        export const depth = inchesToMeters(4);
+            fieldWidth - DoubleSubstation.width - Units.inchesToMeters(88.77);
+        export const depth = Units.inchesToMeters(4);
 
         export const corners: Transform2d[] = [
             [leftX, fieldHeight],
