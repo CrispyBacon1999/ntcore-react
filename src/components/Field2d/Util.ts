@@ -44,7 +44,7 @@ function useAllianceFlipTransform2d(
     const { fieldMirrored, fieldSize } = useYear();
     const allianceColor = useAllianceColor();
 
-    if (force === true || (fieldMirrored && allianceColor === "red")) {
+    if (force ?? (fieldMirrored && allianceColor === "red")) {
         return [fieldSize[0] - transform[0], transform[1]];
     } else {
         return [transform[0], transform[1]];
@@ -59,7 +59,7 @@ function useAllianceFlipTransform2dArray(
     const allianceColor = useAllianceColor();
 
     return transforms.map((transform) => {
-        if (force === true || (fieldMirrored && allianceColor === "red")) {
+        if (force ?? (fieldMirrored && allianceColor === "red")) {
             return [fieldSize[0] - transform[0], transform[1]];
         } else {
             return [transform[0], transform[1]];
@@ -71,7 +71,7 @@ function useAllianceFlipPose2d(transform: Pose2d, force?: boolean): Pose2d {
     const { fieldMirrored, fieldSize } = useYear();
     const allianceColor = useAllianceColor();
 
-    if (force === true || (fieldMirrored && allianceColor === "red")) {
+    if (force ?? (fieldMirrored && allianceColor === "red")) {
         // Flip x coordinate
         // Don't flip y coordinate
         // Flip rotation by 180 degrees (map to [-180, 180])

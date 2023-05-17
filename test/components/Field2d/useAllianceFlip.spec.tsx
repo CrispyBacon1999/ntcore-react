@@ -23,18 +23,16 @@ describe("useAllianceFlip", () => {
 
         describe("Transform2d", () => {
             it("flips the x coordinate", () => {
-                const { result } = renderHook(
-                    () => useAllianceFlip([2, 2], false),
-                    { wrapper }
-                );
+                const { result } = renderHook(() => useAllianceFlip([2, 2]), {
+                    wrapper,
+                });
                 expect(result.current[0]).toEqual(fieldSize[0] - 2);
             });
 
             it("doesn't flip the y coordinate", () => {
-                const { result } = renderHook(
-                    () => useAllianceFlip([2, 2], false),
-                    { wrapper }
-                );
+                const { result } = renderHook(() => useAllianceFlip([2, 2]), {
+                    wrapper,
+                });
                 expect(result.current[1]).toEqual(2);
             });
         });
@@ -43,13 +41,10 @@ describe("useAllianceFlip", () => {
             it("flips the x coordinate for all transforms", () => {
                 const { result } = renderHook(
                     () =>
-                        useAllianceFlip(
-                            [
-                                [2, 2],
-                                [3, 3],
-                            ],
-                            false
-                        ),
+                        useAllianceFlip([
+                            [2, 2],
+                            [3, 3],
+                        ]),
                     { wrapper }
                 );
                 expect(result.current[0][0]).toEqual(fieldSize[0] - 2);
@@ -59,13 +54,10 @@ describe("useAllianceFlip", () => {
             it("doesn't flip the y coordinate for all transforms", () => {
                 const { result } = renderHook(
                     () =>
-                        useAllianceFlip(
-                            [
-                                [2, 2],
-                                [3, 3],
-                            ],
-                            false
-                        ),
+                        useAllianceFlip([
+                            [2, 2],
+                            [3, 3],
+                        ]),
                     { wrapper }
                 );
                 expect(result.current[0][1]).toEqual(2);
@@ -169,18 +161,16 @@ describe("useAllianceFlip", () => {
 
         describe("Transform2d", () => {
             it("doesn't flip the x coordinate", () => {
-                const { result } = renderHook(
-                    () => useAllianceFlip([2, 2], false),
-                    { wrapper }
-                );
+                const { result } = renderHook(() => useAllianceFlip([2, 2]), {
+                    wrapper,
+                });
                 expect(result.current[0]).toEqual(2);
             });
 
             it("doesn't flip the y coordinate", () => {
-                const { result } = renderHook(
-                    () => useAllianceFlip([2, 2], false),
-                    { wrapper }
-                );
+                const { result } = renderHook(() => useAllianceFlip([2, 2]), {
+                    wrapper,
+                });
                 expect(result.current[1]).toEqual(2);
             });
         });
@@ -189,13 +179,10 @@ describe("useAllianceFlip", () => {
             it("doesn't flip the x coordinate for all transforms", () => {
                 const { result } = renderHook(
                     () =>
-                        useAllianceFlip(
-                            [
-                                [2, 2],
-                                [3, 3],
-                            ],
-                            false
-                        ),
+                        useAllianceFlip([
+                            [2, 2],
+                            [3, 3],
+                        ]),
                     { wrapper }
                 );
                 expect(result.current[0][0]).toEqual(2);
@@ -205,13 +192,10 @@ describe("useAllianceFlip", () => {
             it("doesn't flip the y coordinate for all transforms", () => {
                 const { result } = renderHook(
                     () =>
-                        useAllianceFlip(
-                            [
-                                [2, 2],
-                                [3, 3],
-                            ],
-                            false
-                        ),
+                        useAllianceFlip([
+                            [2, 2],
+                            [3, 3],
+                        ]),
                     { wrapper }
                 );
                 expect(result.current[0][1]).toEqual(2);
@@ -222,7 +206,7 @@ describe("useAllianceFlip", () => {
         describe("Pose2d", () => {
             it("doesn't flip the x coordinate", () => {
                 const { result } = renderHook(
-                    () => useAllianceFlip([2, 2, 0], false),
+                    () => useAllianceFlip([2, 2, 0]),
                     { wrapper }
                 );
                 expect(result.current[0]).toEqual(2);
