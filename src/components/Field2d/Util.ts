@@ -51,7 +51,7 @@ export function useYear() {
  *
  * @param transform
  */
-export function useAllianceFlip(
+function useAllianceFlipTransform2d(
     transform: Transform2d,
     force?: boolean
 ): Transform2d {
@@ -65,7 +65,7 @@ export function useAllianceFlip(
     }
 }
 
-export function useAllianceFlipArray(
+function useAllianceFlipTransform2dArray(
     transforms: Transform2d[],
     force?: boolean
 ): Transform2d[] {
@@ -79,6 +79,49 @@ export function useAllianceFlipArray(
             return [transform[0], transform[1]];
         }
     });
+}
+
+function useAllianceFlipPose2d(transform: Pose2d, force?: boolean): Pose2d {
+    const { fieldMirrored, fieldSize } = useYear();
+    const allianceColor = useAllianceColor();
+
+    if (force ?? (fieldMirrored && allianceColor === "red")) {
+        return [
+            fieldSize[0] - transform[0],
+            transform[1],
+            (transform[2] + 180) % 360,
+        ];
+    } else {
+        return [transform[0], transform[1], transform[2]];
+    }
+}
+
+export function useAllianceFlip(
+    transform: Transform2d,
+    force?: boolean
+): Transform2d;
+export function useAllianceFlip(
+    transforms: Transform2d[],
+    force?: boolean
+): Transform2d[];
+export function useAllianceFlip(transform: Pose2d, force?: boolean): Pose2d;
+
+export function useAllianceFlip(
+    transform: Transform2d | Transform2d[] | Pose2d,
+    force?: boolean
+): Transform2d | Transform2d[] | Pose2d {
+    if (Array.isArray(transform)) {
+        if (transform.length === 3) {
+            return useAllianceFlipPose2d(transform as Pose2d, force);
+        } else {
+            return useAllianceFlipTransform2dArray(
+                transform as Transform2d[],
+                force
+            );
+        }
+    } else {
+        return useAllianceFlipTransform2d(transform, force);
+    }
 }
 
 export function transformsToSVGPoints(transforms: Transform2d[]): string {

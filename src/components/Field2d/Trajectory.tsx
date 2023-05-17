@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { type Transform2d, useAllianceFlipArray, inchesToMeters } from "./Util";
+import { type Transform2d, useAllianceFlip, inchesToMeters } from "./Util";
 
 function Trajectory({
     trajectory,
@@ -17,7 +17,7 @@ function Trajectory({
         return points;
     }, [trajectory]);
 
-    const path = useAllianceFlipArray(trajectoryPoints);
+    const path = useAllianceFlip(trajectoryPoints);
 
     return <>
         {path.map((p, i) => <circle key={`trajectory-${i}`} cx={p[0]} cy={p[1]} r={inchesToMeters(2)} fill="black" stroke="none" />)}

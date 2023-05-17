@@ -5,7 +5,6 @@ import {
     inchesToMeters,
     transformsToSVGPoints,
     useAllianceFlip,
-    useAllianceFlipArray,
 } from "../Util";
 
 namespace FieldParams {
@@ -206,7 +205,7 @@ export default function Field2dChargedUp() {
 }
 
 function ChargingStation({ red = false }: { red?: boolean }) {
-    const positions = useAllianceFlipArray(
+    const positions = useAllianceFlip(
         FieldParams.ChargingStation.regionCorners,
         red
     );
@@ -223,11 +222,11 @@ function ChargingStation({ red = false }: { red?: boolean }) {
 }
 
 function ChargingStationFlap({ red = false }: { red?: boolean }) {
-    const positionAllianceWall = useAllianceFlipArray(
+    const positionAllianceWall = useAllianceFlip(
         FieldParams.ChargingStation.flapCornersInner,
         red
     );
-    const positionFieldCenter = useAllianceFlipArray(
+    const positionFieldCenter = useAllianceFlip(
         FieldParams.ChargingStation.flapCornersOuter,
         red
     );
@@ -247,12 +246,9 @@ function ChargingStationFlap({ red = false }: { red?: boolean }) {
 }
 
 function CommunityTapeLines({ red = false }: { red?: boolean }) {
-    const positions = useAllianceFlipArray(
-        FieldParams.Community.tapeLines,
-        red
-    );
+    const positions = useAllianceFlip(FieldParams.Community.tapeLines, red);
 
-    const gridFront = useAllianceFlipArray(
+    const gridFront = useAllianceFlip(
         [
             [FieldParams.Grid.outerX, FieldParams.Community.leftY],
             [FieldParams.Grid.outerX, FieldParams.Community.rightY],
@@ -306,7 +302,7 @@ function GridCubeShelf({
         position + 2
     );
 
-    const positionsInner = useAllianceFlipArray(
+    const positionsInner = useAllianceFlip(
         [
             [FieldParams.Grid.innerX, separators[0]],
             [
@@ -321,7 +317,7 @@ function GridCubeShelf({
         ],
         red
     );
-    const positionsOuter = useAllianceFlipArray(
+    const positionsOuter = useAllianceFlip(
         [
             [
                 (FieldParams.Grid.innerX + FieldParams.Grid.lowX) / 2,
@@ -365,7 +361,7 @@ function GridConeSection({
 
     const coopertition = position === 3 || position === 5;
 
-    const positions = useAllianceFlipArray(
+    const positions = useAllianceFlip(
         [
             [FieldParams.Grid.innerX, separators[0]],
             [FieldParams.Grid.lowX, separators[0]],
@@ -398,7 +394,7 @@ function GridSeparator({
     red?: boolean;
     position: number;
 }) {
-    const positions = useAllianceFlipArray(
+    const positions = useAllianceFlip(
         [
             [FieldParams.Grid.lowX, FieldParams.Grid.separatorY[position]],
             [FieldParams.Grid.outerX, FieldParams.Grid.separatorY[position]],
@@ -417,7 +413,7 @@ function GridSeparator({
 }
 
 function GridBackPlate({ red = false }: { red?: boolean }) {
-    const positions = useAllianceFlipArray(
+    const positions = useAllianceFlip(
         [
             [FieldParams.Community.innerX, FieldParams.Community.leftY],
             [FieldParams.Grid.innerX, FieldParams.Community.leftY],
@@ -438,7 +434,7 @@ function GridBackPlate({ red = false }: { red?: boolean }) {
 }
 
 function Barrier({ red = false }: { red?: boolean }) {
-    const positions = useAllianceFlipArray(
+    const positions = useAllianceFlip(
         [
             [FieldParams.Community.innerX, FieldParams.Community.leftY],
             [FieldParams.Community.midX, FieldParams.Community.leftY],
@@ -457,7 +453,7 @@ function Barrier({ red = false }: { red?: boolean }) {
 }
 
 function SingleSubstation({ red = false }: { red?: boolean }) {
-    const positions = useAllianceFlipArray(
+    const positions = useAllianceFlip(
         FieldParams.SingleSubstation.corners,
         red
     );
@@ -473,7 +469,7 @@ function SingleSubstation({ red = false }: { red?: boolean }) {
 }
 
 function DoubleSubstation({ red = false }: { red?: boolean }) {
-    const positions = useAllianceFlipArray(
+    const positions = useAllianceFlip(
         FieldParams.DoubleSubstation.corners,
         red
     );
@@ -489,7 +485,7 @@ function DoubleSubstation({ red = false }: { red?: boolean }) {
 }
 
 function LoadingZoneTapeLines({ red = false }: { red?: boolean }) {
-    const positions = useAllianceFlipArray(
+    const positions = useAllianceFlip(
         FieldParams.LoadingZone.regionCorners.slice(0, 4),
         red
     );

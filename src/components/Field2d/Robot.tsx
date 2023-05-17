@@ -1,5 +1,11 @@
 import React from "react";
-import { Pose2d, inchesToMeters, toRadians, useAllianceColor } from "./Util";
+import {
+    Pose2d,
+    inchesToMeters,
+    toRadians,
+    useAllianceColor,
+    useAllianceFlip,
+} from "./Util";
 import { CSSProperties } from "react";
 
 export type RobotProps = {
@@ -18,22 +24,22 @@ function Robot({ width, length, pose }: RobotProps & { pose: Pose2d }) {
 
     const red = allianceColor === "red";
 
+    const robotPose = useAllianceFlip(pose);
+
     return (
         <>
             <rect
                 width={width}
                 height={length}
-                // x={pose[0] - width / 2}
-                // y={pose[1] - length / 2}
                 stroke={
                     red
                         ? "var(--red-alliance-color)"
                         : "var(--blue-alliance-color)"
                 }
                 strokeWidth={inchesToMeters(3)}
-                transform={`translate(${pose[0] - width / 2}, ${
-                    pose[1] - length / 2
-                }) rotate(${pose[2]})`}
+                transform={`translate(${robotPose[0] - width / 2}, ${
+                    robotPose[1] - length / 2
+                }) rotate(${robotPose[2]})`}
                 style={{
                     ...robotStyle,
                     transformBox: "fill-box",
@@ -41,10 +47,16 @@ function Robot({ width, length, pose }: RobotProps & { pose: Pose2d }) {
                 }}
             />
             <line
-                x1={pose[0]}
-                y1={pose[1]}
-                x2={pose[0] + (Math.cos(toRadians(pose[2])) * width) / 2}
-                y2={pose[1] + (Math.sin(toRadians(pose[2])) * width) / 2}
+                x1={robotPose[0]}
+                y1={robotPose[1]}
+                x2={
+                    robotPose[0] +
+                    (Math.cos(toRadians(robotPose[2])) * width) / 2
+                }
+                y2={
+                    robotPose[1] +
+                    (Math.sin(toRadians(robotPose[2])) * width) / 2
+                }
                 stroke="black"
                 strokeWidth={inchesToMeters(3)}
             />
