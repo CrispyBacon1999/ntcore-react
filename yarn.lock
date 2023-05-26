@@ -2343,13 +2343,13 @@
     "@storybook/client-logger" "7.0.13"
     "@storybook/preview-api" "7.0.13"
 
-"@storybook/core-client@7.0.15":
-  version "7.0.15"
-  resolved "https://registry.yarnpkg.com/@storybook/core-client/-/core-client-7.0.15.tgz#89a6a148e5f46ddcc908adad72084d3f1c269392"
-  integrity sha512-h4/X597DnWp3Ocpli1B27fpKLXEU1qD4PYCnJW4Pl9DyJXBbzCo2VFZ7LyG3Wrod7ZjrmGOYjOiSisS3f8pcPA==
+"@storybook/core-client@7.0.17":
+  version "7.0.17"
+  resolved "https://registry.yarnpkg.com/@storybook/core-client/-/core-client-7.0.17.tgz#9f63bf5743f882d1c09a3cf6e888ddefd93902db"
+  integrity sha512-KiKxulFP+ln/zFgUEwb9NpPCi+PDeSCJyUS1T2qY+TYH4+c/jp/P91mrdKuF38E+NLApGT45o0K2zh5+X2M3eA==
   dependencies:
-    "@storybook/client-logger" "7.0.15"
-    "@storybook/preview-api" "7.0.15"
+    "@storybook/client-logger" "7.0.17"
+    "@storybook/preview-api" "7.0.17"
 
 "@storybook/core-common@7.0.13":
   version "7.0.13"
@@ -2831,17 +2831,17 @@
     util-deprecate "^1.0.2"
 
 "@storybook/react@^7.0.13":
-  version "7.0.15"
-  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-7.0.15.tgz#1c8595c2676f70493ab378880797b3265e585d58"
-  integrity sha512-YuqUyfbPr4mFsRAIUTmVgx5mCNK00fg/Mztwyg3PRN4SuRWhx5MJy6kMX2GV3DcKqyeC5U2aWKHlzjzrGwXymw==
+  version "7.0.17"
+  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-7.0.17.tgz#75c0d9ae42358f4836ca6f43d381d7d6162fda73"
+  integrity sha512-SgTUwcJ2opDqfHz1lp8vO6pRMTqmzRb5wrbVQTkH4hRI1BthrUpnptR98AeDbcTzTf1FpiZXh4RWMIK8p6rHlQ==
   dependencies:
-    "@storybook/client-logger" "7.0.15"
-    "@storybook/core-client" "7.0.15"
-    "@storybook/docs-tools" "7.0.15"
+    "@storybook/client-logger" "7.0.17"
+    "@storybook/core-client" "7.0.17"
+    "@storybook/docs-tools" "7.0.17"
     "@storybook/global" "^5.0.0"
-    "@storybook/preview-api" "7.0.15"
-    "@storybook/react-dom-shim" "7.0.15"
-    "@storybook/types" "7.0.15"
+    "@storybook/preview-api" "7.0.17"
+    "@storybook/react-dom-shim" "7.0.17"
+    "@storybook/types" "7.0.17"
     "@types/escodegen" "^0.0.6"
     "@types/estree" "^0.0.51"
     "@types/node" "^16.0.0"
