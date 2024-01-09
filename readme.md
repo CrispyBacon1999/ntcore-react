@@ -55,13 +55,13 @@ There are 2 different hooks provided for getting values from your robot.
 Returns the value at the provided key, with live updates whenver it changes.
 
 ```tsx
-import { NetworkTableTypeInfos } from "ntcore-ts-client";
+import { NetworkTablesTypeInfos } from "ntcore-ts-client";
 import { useNTValue } from "ntcore-react";
 
 const YourComponent = () => {
     const intakeExtended = useNTValue<boolean>(
         "/Intake/extended",
-        NetworkTableTypeInfos.kBoolean,
+        NetworkTablesTypeInfos.kBoolean,
         false
     );
 
@@ -83,13 +83,13 @@ Returns the value at the provided key, with live updates whenver it changes.
 Also gives access to modify values, allowing you to talk to the robot over NetworkTables.
 
 ```tsx
-import { NetworkTableTypeInfos } from "ntcore-ts-client";
+import { NetworkTablesTypeInfos } from "ntcore-ts-client";
 import { useNTState } from "ntcore-react";
 
 const YourComponent = () => {
     const [ledColors, setColors] = useNTState<boolean>(
         "/LED/color",
-        NetworkTableTypeInfos.kString,
+        NetworkTablesTypeInfos.kString,
         "#ffffff"
     );
 
