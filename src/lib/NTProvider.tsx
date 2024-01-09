@@ -24,8 +24,9 @@ export default function NTProvider({
     teamNumber,
     port,
 }: NTProviderProps) {
-    const [ntConnection, setNtConnection] =
-        useState<NetworkTables | null>(null);
+    const [ntConnection, setNtConnection] = useState<NetworkTables | null>(
+        null
+    );
     const [
         ntConnectionCreatedUsingTeamNumber,
         setNtConnectionCreatedUsingTeamNumber,
@@ -38,11 +39,11 @@ export default function NTProvider({
         // Otherwise, reconnect using the uri, or throw an error if a team number is provided
         if (ntConnection === null) {
             if (uri) {
-                setNtConnection(NetworkTables.createInstanceByURI(uri, port));
+                setNtConnection(NetworkTables.getInstanceByURI(uri, port));
                 setNtConnectionCreatedUsingTeamNumber(false);
             } else if (teamNumber) {
                 setNtConnection(
-                    NetworkTables.createInstanceByTeam(teamNumber, port)
+                    NetworkTables.getInstanceByTeam(teamNumber, port)
                 );
                 setNtConnectionCreatedUsingTeamNumber(true);
                 oldTeamNumber.current = teamNumber;

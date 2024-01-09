@@ -8,7 +8,7 @@ import { MockedNetworkTables } from "./mocks";
 test("NTProvider creates NT Instance using team number", () => {
     render(<NTProvider teamNumber={123}></NTProvider>);
 
-    expect(NetworkTables.createInstanceByTeam).toHaveBeenCalledWith(
+    expect(NetworkTables.getInstanceByTeam).toHaveBeenCalledWith(
         123,
         undefined
     );
@@ -24,18 +24,18 @@ test("NTProvider throws error if no uri or team number is provided", () => {
 
 test("NTProvider uses uri if both uri and team number are provided", () => {
     render(<NTProvider uri={"test"} teamNumber={123}></NTProvider>);
-    expect(NetworkTables.createInstanceByURI).toHaveBeenCalledWith(
+    expect(NetworkTables.getInstanceByURI).toHaveBeenCalledWith(
         "test",
         undefined
     );
-    expect(NetworkTables.createInstanceByTeam).not.toHaveBeenCalled();
+    expect(NetworkTables.getInstanceByTeam).not.toHaveBeenCalled();
 });
 
 test("NTProvider successfully changes uri if it is changed after connection is created", () => {
     const { rerender } = render(<NTProvider uri={"test"}></NTProvider>);
     rerender(<NTProvider uri={"test2"}></NTProvider>);
 
-    expect(NetworkTables.createInstanceByURI).toHaveBeenCalledWith(
+    expect(NetworkTables.getInstanceByURI).toHaveBeenCalledWith(
         "test",
         undefined
     );
@@ -66,7 +66,7 @@ test("NTProvider throws error if team number is changed after connection is crea
 test("NTProvider creates NT Instance using URI", () => {
     render(<NTProvider uri={"test"}></NTProvider>);
 
-    expect(NetworkTables.createInstanceByURI).toHaveBeenCalledWith(
+    expect(NetworkTables.getInstanceByURI).toHaveBeenCalledWith(
         "test",
         undefined
     );

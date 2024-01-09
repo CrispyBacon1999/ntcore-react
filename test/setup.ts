@@ -2,11 +2,11 @@ import "@testing-library/jest-dom/extend-expect";
 import { NetworkTables } from "ntcore-ts-client";
 import { MockedNetworkTables } from "./mocks";
 
-jest.spyOn(NetworkTables, "createInstanceByTeam").mockReturnValue(
+jest.spyOn(NetworkTables, "getInstanceByTeam").mockReturnValue(
     MockedNetworkTables
 );
 
-jest.spyOn(NetworkTables, "createInstanceByURI").mockReturnValue(
+jest.spyOn(NetworkTables, "getInstanceByURI").mockReturnValue(
     MockedNetworkTables
 );
 
