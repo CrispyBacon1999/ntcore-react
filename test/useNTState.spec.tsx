@@ -1,18 +1,18 @@
 import React from "react";
 import { NTProvider, useNTState } from "../src";
-import { NetworkTableTypeInfos } from "ntcore-ts-client";
+import { NetworkTablesTypeInfos } from "ntcore-ts-client";
 import { render, act, fireEvent } from "@testing-library/react";
 import { MockedTopic } from "./mocks";
 
 const TestComponent = () => {
-    const [state] = useNTState("test", NetworkTableTypeInfos.kBoolean, false);
+    const [state] = useNTState("test", NetworkTablesTypeInfos.kBoolean, false);
     return <div>{state.toString()}</div>;
 };
 
 const TestComponentUpdate = () => {
     const [state, setState] = useNTState<string>(
         "test",
-        NetworkTableTypeInfos.kString,
+        NetworkTablesTypeInfos.kString,
         "Test"
     );
     return (
