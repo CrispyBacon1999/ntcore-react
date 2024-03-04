@@ -30,9 +30,7 @@ const useNTState = <T extends NTTopicTypes>(
             const clientTopic = client.createTopic(key, ntType, defaultValue);
             setTopic(clientTopic);
             const subscriptionUID = clientTopic.subscribe(listener);
-            clientTopic.publish().then(() => {
-                console.log("Published topic:", key);
-            });
+            clientTopic.publish();
 
             return () => {
                 if (subscriptionUID && clientTopic) {
