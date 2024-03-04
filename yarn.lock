@@ -7195,10 +7195,10 @@ npmlog@^5.0.1:
     gauge "^3.0.0"
     set-blocking "^2.0.0"
 
-ntcore-ts-client@^2.0.0-beta.3:
-  version "2.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/ntcore-ts-client/-/ntcore-ts-client-2.0.0-beta.3.tgz#d79ecd79a5c61e332b783488798bf5255b26786e"
-  integrity sha512-rwEWHnEL3Lv2lb3t1MdrBIBOR/bFKp+8eisefffnUYaRHlxGdGz/UZKrtTj8DTBDulEdwOKdh4wE2qs9VsdGAA==
+ntcore-ts-client@^2.0.0-beta.6:
+  version "2.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/ntcore-ts-client/-/ntcore-ts-client-2.0.0-beta.6.tgz#64de3e897eee6869ae118cee3da417b6de358337"
+  integrity sha512-d4Uj5VGfnEadydiwF9lmoTizYuEozg/CssPcD8A0FvuhTzjXWZJcRUug67h/ZD3pG+FEJX7p5/bjjTigLSmsIw==
   dependencies:
     "@msgpack/msgpack" "^2.8.0"
     isomorphic-ws "^5.0.0"
